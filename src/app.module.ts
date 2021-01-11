@@ -13,6 +13,7 @@ import { CourseModule } from './course/course.module';
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true,
+      context: ({ req }) => ({ headers: req.headers }),
     }),
     MongooseModule.forRoot('mongodb://localhost/readme',{
       useNewUrlParser: true,

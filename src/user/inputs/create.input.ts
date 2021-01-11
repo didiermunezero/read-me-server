@@ -13,5 +13,5 @@ export class CreateInput {
   @Field()
   readonly profile: string;
   @Field()
-  readonly password: string;
+   password: string;
 }

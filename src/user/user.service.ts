@@ -7,12 +7,14 @@ import { CreateInput } from './inputs/create.input';
 import {loginInput} from './inputs/login.input'
 import {ApolloError} from 'apollo-server-express';
 import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UserService {
   constructor(@InjectModel('User') private readonly userModel: Model<User_Pass>) {}
 
   async create(createDto: CreateInput): Promise<User> {
+    createDto.password = await bcrypt.hash(createDto.password, 12);
     const createdCat = new this.userModel(createDto);
     return await createdCat.save();
   }
@@ -33,8 +35,10 @@ export class UserService {
       if(!user){
           throw new ApolloError("Wrong credentials","NOT_FOUND");
       }
-      if(user.password != loginDto.password ){
-          throw new ApolloError("Wrong credentials","NOT_FOUND");
+      console.log(user)
+      const isEqual = await bcrypt.compare(loginDto.password, user.password);
+      if(!isEqual){
+        throw new ApolloError("Wrong Password","NOT_FOUND");
       }
       const token = jwt.sign(
         {
