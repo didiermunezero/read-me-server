@@ -1,13 +1,13 @@
 import { Resolver, Subscription,Query, Mutation, Args,} from '@nestjs/graphql';
 import {PubSub} from 'apollo-server-express'
-import { CatsService } from './cats.service';
+import { CourseService } from './course.service';
 import { CatType } from './dto/create-cat.dto';
 import { CatInput } from './inputs/cat.input';
 const pubSub = new PubSub();
 
 @Resolver()
-export class CatsResolver {
-  constructor(private readonly catsService: CatsService) {}
+export class CourseResolver {
+  constructor(private readonly catsService: CourseService) {}
 
   @Query(() => String)
   async hello() {
