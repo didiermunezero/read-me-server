@@ -24,7 +24,7 @@ input CourseInput {
 type CourseType {
   id: ID!
   name: String!
-  author: [Int!]!
+  author: [UserType!]!
 }
 
 input CreateInput {

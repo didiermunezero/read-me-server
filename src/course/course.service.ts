@@ -6,14 +6,14 @@ import { CourseInput } from './inputs/course.input';
 
 @Injectable()
 export class CourseService {
-  constructor(@InjectModel('Course') private readonly catModel: Model<Course>) {}
+  constructor(@InjectModel('Course') private readonly courseModel: Model<Course>) {}
 
   async create(createCatDto: CourseInput): Promise<Course> {
-    const createdCat = new this.catModel(createCatDto);
+    const createdCat = new this.courseModel(createCatDto);
     return await createdCat.save();
   }
 
   async findAll(): Promise<Course[]> {
-    return await this.catModel.find().exec();
+    return await this.courseModel.find().populate('author').exec();
   }
 }

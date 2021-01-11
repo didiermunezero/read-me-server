@@ -1,4 +1,4 @@
-import { User } from 'src/user/interfaces/user.interface';
+import { UserType } from 'src/user/dto/create-user.dto';
 import { ObjectType, Field, Int, ID } from 'type-graphql';
 
 @ObjectType()
@@ -7,6 +7,6 @@ export class CourseType {
   id: string;
   @Field()
   readonly name: string;
-  @Field(() => Int)
-  readonly author: [User];
+  @Field(() => [UserType])
+  readonly author: UserType[];
 }
