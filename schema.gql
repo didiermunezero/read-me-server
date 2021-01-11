@@ -26,20 +26,20 @@ input CreateInput {
 }
 
 type Mutation {
-  createCat(input: CatInput!): CatType!
   createUser(input: CreateInput!): UserType!
+  createCat(input: CatInput!): CatType!
 }
 
 type Query {
   hello: String!
-  cats: [CatType!]!
   users: [UserType!]!
   user(id: String!): UserType!
+  cats: [CatType!]!
 }
 
 type Subscription {
-  newCat: CatType!
   newUser: UserType!
+  newCourse: CatType!
 }
 
 type UserType {

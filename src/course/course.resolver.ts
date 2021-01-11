@@ -1,13 +1,13 @@
 import { Resolver, Subscription,Query, Mutation, Args,} from '@nestjs/graphql';
 import {PubSub} from 'apollo-server-express'
 import { CourseService } from './course.service';
-import { CatType } from './dto/create-cat.dto';
-import { CatInput } from './inputs/cat.input';
+import { CatType } from './dto/create-course.dto';
+import { CatInput } from './inputs/course.input';
 const pubSub = new PubSub();
 
 @Resolver()
 export class CourseResolver {
-  constructor(private readonly catsService: CourseService) {}
+  constructor(private readonly courseService: CourseService) {}
 
   @Query(() => String)
   async hello() {
@@ -16,16 +16,16 @@ export class CourseResolver {
 
   @Query(() => [CatType])
   async cats() {
-    return this.catsService.findAll();
+    return this.courseService.findAll();
   }
 
   @Mutation(() => CatType)
   async createCat(@Args('input') input: CatInput) {
-    pubSub.publish('newCat', { newCat: input });
-    return this.catsService.create(input);
+    pubSub.publish('newCourse', { newCourse: input });
+    return this.courseService.create(input);
   }
   @Subscription(() => CatType)
-  newCat() {
-    return pubSub.asyncIterator('newCat');
+  newCourse() {
+    return pubSub.asyncIterator('newCourse');
   }
 }

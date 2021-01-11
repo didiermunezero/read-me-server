@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { CourseResolver } from './cats.resolver';
+import { CourseResolver } from './course.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CourseSchema } from './course.schema';
 import { CourseService } from './course.service';
