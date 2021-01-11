@@ -7,7 +7,7 @@ const pubSub = new PubSub();
 
 @Resolver()
 export class UserResolver {
-  constructor(private readonly catsService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Query(() => String)
   async hello() {
@@ -15,17 +15,17 @@ export class UserResolver {
   }
 
   @Query(() => [UserType])
-  async cats() {
-    return this.catsService.findAll();
+  async users() {
+    return this.userService.findAll();
   }
 
   @Mutation(() => UserType)
-  async createCat(@Args('input') input: CreateInput) {
-    pubSub.publish('newCat', { newCat: input });
-    return this.catsService.create(input);
+  async createUser(@Args('input') input: CreateInput) {
+    pubSub.publish('newUser', { newUser: input });
+    return this.userService.create(input);
   }
   @Subscription(() => UserType)
-  newCat() {
-    return pubSub.asyncIterator('newCat');
+  newUser() {
+    return pubSub.asyncIterator('newUser');
   }
 }
