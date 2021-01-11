@@ -9,7 +9,7 @@ import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
-    //CatsModule,
+    CatsModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true,

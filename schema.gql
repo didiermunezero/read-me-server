@@ -3,6 +3,19 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input CatInput {
+  name: String!
+  age: Int!
+  breed: String!
+}
+
+type CatType {
+  id: ID!
+  name: String!
+  age: Int!
+  breed: String!
+}
+
 input CourseInput {
   name: String!
   author: [ID!]!
@@ -24,18 +37,19 @@ input CreateInput {
 }
 
 type Mutation {
-  createUser(input: CreateInput!): UserType!
   createCat(input: CourseInput!): CourseType!
+  createUser(input: CreateInput!): UserType!
 }
 
 type Query {
   hello: String!
+  cats: [CourseType!]!
   users: [UserType!]!
   user(id: String!): UserType!
-  cats: [CourseType!]!
 }
 
 type Subscription {
+  newCat: CatType!
   newUser: UserType!
   newCourse: CourseType!
 }
