@@ -21,7 +21,7 @@ export class UserService {
   async findOne(id: string): Promise<User> {
       const user = await this.userModel.findOne({_id: id});
       if(!user){
-          throw new ApolloError("Not found "+typeof id,"NOT_FOUND");
+          throw new ApolloError("Not found "+id,"NOT_FOUND");
       }
       return user;
   }

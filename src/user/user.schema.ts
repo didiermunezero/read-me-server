@@ -24,6 +24,10 @@ export const UserSchema = new mongoose.Schema({
         type: String,
         enum: USER_TYPE,
         default:'NONE'
+    },
+    password:{
+        type: String,
+        required: true,
     }
 },{
     timestamps: true,
