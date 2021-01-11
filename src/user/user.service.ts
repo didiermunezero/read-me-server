@@ -28,22 +28,22 @@ export class UserService {
       }
       return user;
   }
-//   async login(loginDto: loginInput): Promise<String>{
-//       const user = await this.userModel.findOne({username: loginDto.username});
-//       if(!user){
-//           throw new ApolloError("Wrong credentials","NOT_FOUND");
-//       }
-//       if(user.password != loginDto.password ){
-//           throw new ApolloError("Wrong credentials","NOT_FOUND");
-//       }
-//       const token = jwt.sign(
-//         {
-//           userId: user._id.toString(),
-//           username: user.username,
-//         },
-//         "jwtencryptionkey",
-//         { expiresIn: "2h" }
-//       );
-//       return token;
-//   }
+  async login(loginDto: loginInput): Promise<String>{
+      const user = await this.userModel.findOne({username: loginDto.username});
+      if(!user){
+          throw new ApolloError("Wrong credentials","NOT_FOUND");
+      }
+      if(user.password != loginDto.password ){
+          throw new ApolloError("Wrong credentials","NOT_FOUND");
+      }
+      const token = jwt.sign(
+        {
+          userId: user._id.toString(),
+          username: user.username,
+        },
+        "jwtencryptionkey",
+        { expiresIn: "2h" }
+      );
+      return token;
+  }
 }

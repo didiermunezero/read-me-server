@@ -33,10 +33,10 @@ export class UserResolver {
     return this.userService.create(input);
   }
 
-//   @Mutation(()=>Object)
-//   async login(@Args('logindata') logindata:loginInput){
-//       return this.userService.login(logindata)
-//   }
+  @Mutation(()=>String)
+  async login(@Args('logindata') logindata:loginInput){
+      return this.userService.login(logindata)
+  }
   @Subscription(() => UserType)
   newUser() {
     return pubSub.asyncIterator('newUser');

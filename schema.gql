@@ -36,9 +36,15 @@ input CreateInput {
   password: String!
 }
 
+input loginInput {
+  username: String!
+  password: String!
+}
+
 type Mutation {
   createCat(input: CatInput!): CatType!
   createUser(input: CreateInput!): UserType!
+  login(logindata: loginInput!): String!
   createCourse(input: CourseInput!): CourseType!
 }
 
