@@ -5,7 +5,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { UserModule } from './user/user.module';
-import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -20,7 +19,6 @@ import { CourseModule } from './course/course.module';
     useCreateIndex: true,
     }),
     UserModule,
-    CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
