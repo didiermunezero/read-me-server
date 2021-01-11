@@ -16,15 +16,32 @@ type CatType {
   breed: String!
 }
 
+input CreateInput {
+  username: String!
+  fname: Int!
+  lname: String!
+  dob: String!
+  profile: String!
+}
+
 type Mutation {
-  createCat(input: CatInput!): CatType!
+  createCat(input: CreateInput!): UserType!
 }
 
 type Query {
   hello: String!
-  cats: [CatType!]!
+  cats: [UserType!]!
 }
 
 type Subscription {
-  newCat: CatType!
+  newCat: UserType!
+}
+
+type UserType {
+  id: ID!
+  username: String!
+  fname: String!
+  lname: String!
+  dob: String!
+  profile: String!
 }
