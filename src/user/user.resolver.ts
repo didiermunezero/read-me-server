@@ -1,4 +1,4 @@
-import { Resolver, Subscription,Query, Mutation, Args,} from '@nestjs/graphql';
+import { Resolver, Subscription,Query, Mutation, Args, Context,} from '@nestjs/graphql';
 import {PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
 import { UserType,loginOutPut } from './dto/create-user.dto';
@@ -34,7 +34,8 @@ export class UserResolver {
   }
 
   @Mutation(()=>loginOutPut)
-  async login(@Args('logindata') logindata:loginInput){
+  async login(@Context('headers')headers:loginOutPut, @Args('logindata') logindata:loginInput){
+    console.log(headers)
       return this.userService.login(logindata)
   }
   @Subscription(() => UserType)

@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { UserModule } from './user/user.module';
 import { CourseModule } from './course/course.module';
+import {returnToken} from '../utils/tokenizer'
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { CourseModule } from './course/course.module';
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true,
-      context: ({ req }) => ({ headers: req.headers }),
+      context: async({ req }) =>  ({ headers: {...req.headers,user: await returnToken(req)} }),
     }),
     MongooseModule.forRoot('mongodb://localhost/readme',{
       useNewUrlParser: true,
