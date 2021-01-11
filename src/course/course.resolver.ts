@@ -15,12 +15,12 @@ export class CourseResolver {
   }
 
   @Query(() => [CourseType])
-  async cats() {
+  async courses() {
     return this.courseService.findAll();
   }
 
   @Mutation(() => CourseType)
-  async createCat(@Args('input') input: CourseInput) {
+  async createCourse(@Args('input') input: CourseInput) {
     pubSub.publish('newCourse', { newCourse: input });
     return this.courseService.create(input);
   }

@@ -37,15 +37,17 @@ input CreateInput {
 }
 
 type Mutation {
-  createCat(input: CourseInput!): CourseType!
+  createCat(input: CatInput!): CatType!
   createUser(input: CreateInput!): UserType!
+  createCourse(input: CourseInput!): CourseType!
 }
 
 type Query {
   hello: String!
-  cats: [CourseType!]!
+  cats: [CatType!]!
   users: [UserType!]!
   user(id: String!): UserType!
+  courses: [CourseType!]!
 }
 
 type Subscription {
