@@ -1,4 +1,3 @@
-import { User } from 'src/user/interfaces/user.interface';
 import { InputType, Field} from 'type-graphql';
 
 @InputType()
