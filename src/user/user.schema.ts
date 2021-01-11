@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 const USER_TYPE = ['LECTURE','ADMIN','NONE']
-export const CatSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
   usename: {
       type:String,
       required: true,
