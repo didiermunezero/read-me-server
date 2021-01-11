@@ -3,7 +3,7 @@ import {PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
 import { UserType } from './dto/create-user.dto';
 import { CreateInput } from './inputs/create.input';
-import { ID } from 'type-graphql';
+import {loginInput} from './inputs/login.input'
 const pubSub = new PubSub();
 
 @Resolver()
@@ -32,6 +32,11 @@ export class UserResolver {
     pubSub.publish('newUser', { newUser: input });
     return this.userService.create(input);
   }
+
+//   @Mutation(()=>Object)
+//   async login(@Args('logindata') logindata:loginInput){
+//       return this.userService.login(logindata)
+//   }
   @Subscription(() => UserType)
   newUser() {
     return pubSub.asyncIterator('newUser');

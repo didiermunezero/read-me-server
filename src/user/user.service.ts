@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from './interfaces/user.interface';
+import { User,loginOutPut } from './interfaces/user.interface';
 import {User_Pass} from './interfaces/user_pass.interface'
 import { CreateInput } from './inputs/create.input';
 import {loginInput} from './inputs/login.input'
@@ -28,22 +28,22 @@ export class UserService {
       }
       return user;
   }
-  async login(loginDto: loginInput): Promise<{token:""}>{
-      const user = await this.userModel.findOne({username: loginDto.username});
-      if(!user){
-          throw new ApolloError("Wrong credentials","NOT_FOUND");
-      }
-      if(user.password != loginDto.password ){
-          throw new ApolloError("Wrong credentials","NOT_FOUND");
-      }
-      const token = jwt.sign(
-        {
-          userId: user._id.toString(),
-          username: user.username,
-        },
-        "jwtencryptionkey",
-        { expiresIn: "2h" }
-      );
-      return { token: token };
-  }
+//   async login(loginDto: loginInput): Promise<String>{
+//       const user = await this.userModel.findOne({username: loginDto.username});
+//       if(!user){
+//           throw new ApolloError("Wrong credentials","NOT_FOUND");
+//       }
+//       if(user.password != loginDto.password ){
+//           throw new ApolloError("Wrong credentials","NOT_FOUND");
+//       }
+//       const token = jwt.sign(
+//         {
+//           userId: user._id.toString(),
+//           username: user.username,
+//         },
+//         "jwtencryptionkey",
+//         { expiresIn: "2h" }
+//       );
+//       return token;
+//   }
 }
