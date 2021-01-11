@@ -12,4 +12,6 @@ export class CreateInput {
   readonly dob: string;
   @Field()
   readonly profile: string;
+  @Field()
+  readonly password: string;
 }
