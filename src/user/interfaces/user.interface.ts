@@ -9,6 +9,6 @@ export interface User extends Document {
   readonly type: string;
 }
 
-export interface loginOutPut extends Document {
+export interface loginOutPut{
     readonly token: string;
   }

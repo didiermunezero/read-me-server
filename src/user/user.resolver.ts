@@ -1,7 +1,7 @@
 import { Resolver, Subscription,Query, Mutation, Args,} from '@nestjs/graphql';
 import {PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
-import { UserType } from './dto/create-user.dto';
+import { UserType,loginOutPut } from './dto/create-user.dto';
 import { CreateInput } from './inputs/create.input';
 import {loginInput} from './inputs/login.input'
 const pubSub = new PubSub();
@@ -33,7 +33,7 @@ export class UserResolver {
     return this.userService.create(input);
   }
 
-  @Mutation(()=>String)
+  @Mutation(()=>loginOutPut)
   async login(@Args('logindata') logindata:loginInput){
       return this.userService.login(logindata)
   }

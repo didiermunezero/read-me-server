@@ -41,10 +41,14 @@ input loginInput {
   password: String!
 }
 
+type loginOutPut {
+  token: String!
+}
+
 type Mutation {
   createCat(input: CatInput!): CatType!
   createUser(input: CreateInput!): UserType!
-  login(logindata: loginInput!): String!
+  login(logindata: loginInput!): loginOutPut!
   createCourse(input: CourseInput!): CourseType!
 }
 

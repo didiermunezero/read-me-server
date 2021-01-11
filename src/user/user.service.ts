@@ -28,7 +28,7 @@ export class UserService {
       }
       return user;
   }
-  async login(loginDto: loginInput): Promise<String>{
+  async login(loginDto: loginInput): Promise<loginOutPut>{
       const user = await this.userModel.findOne({username: loginDto.username});
       if(!user){
           throw new ApolloError("Wrong credentials","NOT_FOUND");
@@ -44,6 +44,6 @@ export class UserService {
         "jwtencryptionkey",
         { expiresIn: "2h" }
       );
-      return token;
+      return {token: token};
   }
 }

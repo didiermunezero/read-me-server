@@ -17,3 +17,9 @@ export class UserType {
   @Field()
   readonly type: string;
 }
+
+@ObjectType()
+export class loginOutPut {
+  @Field()
+  readonly token: string;
+}
