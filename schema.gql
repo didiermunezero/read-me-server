@@ -18,7 +18,7 @@ type CatType {
 
 input CreateInput {
   username: String!
-  fname: Int!
+  fname: String!
   lname: String!
   dob: String!
   profile: String!

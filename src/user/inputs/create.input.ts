@@ -4,7 +4,7 @@ import { InputType, Field, Int } from 'type-graphql';
 export class CreateInput {
   @Field()
   readonly username: string;
-  @Field(() => Int)
+  @Field()
   readonly fname: string;
   @Field()
   readonly lname: string;

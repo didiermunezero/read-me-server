@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 const USER_TYPE = ['LECTURE','ADMIN','NONE']
 export const UserSchema = new mongoose.Schema({
-  usename: {
+  username: {
       type:String,
       required: true,
       unique: true,
