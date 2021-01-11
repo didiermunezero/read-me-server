@@ -3,6 +3,7 @@ import {PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
 import { UserType } from './dto/create-user.dto';
 import { CreateInput } from './inputs/create.input';
+import { ID } from 'type-graphql';
 const pubSub = new PubSub();
 
 @Resolver()

@@ -1,17 +1,11 @@
-import { InputType, Field} from 'type-graphql';
+import { Document } from 'mongoose';
 
-@InputType()
-export class CreateInput {
-  @Field()
+export interface User_Pass extends Document {
   readonly username: string;
-  @Field()
   readonly fname: string;
-  @Field()
   readonly lname: string;
-  @Field()
   readonly dob: string;
-  @Field()
   readonly profile: string;
-  @Field()
+  readonly type: string;
   readonly password: string;
 }
