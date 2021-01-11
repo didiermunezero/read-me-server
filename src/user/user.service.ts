@@ -16,4 +16,12 @@ export class UserService {
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();
   }
+
+  async findOne(id: string): Promise<User> {
+      const user = await this.userModel.findOne({_id: id});
+      if(!user){
+          throw new Error("Not found "+typeof id);
+      }
+      return user;
+  }
 }

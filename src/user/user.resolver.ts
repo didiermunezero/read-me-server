@@ -16,7 +16,14 @@ export class UserResolver {
 
   @Query(() => [UserType])
   async users() {
-    return this.userService.findAll();
+    const users =  this.userService.findAll();
+    return users;
+  }
+
+  @Query(() => UserType)
+  async user(@Args('id') id: string) {
+    const user =  this.userService.findOne(id);
+    return user;
   }
 
   @Mutation(() => UserType)

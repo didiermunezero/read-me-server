@@ -33,6 +33,7 @@ type Query {
   hello: String!
   cats: [CatType!]!
   users: [UserType!]!
+  user(id: String!): UserType!
 }
 
 type Subscription {
