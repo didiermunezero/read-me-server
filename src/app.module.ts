@@ -13,7 +13,7 @@ import { UserModule } from './user/user.module';
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true,
     }),
-    MongooseModule.forRoot('mongodb://localhost/myapp',{
+    MongooseModule.forRoot('mongodb://localhost/readme',{
       useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

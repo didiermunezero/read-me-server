@@ -47,4 +47,5 @@ type UserType {
   lname: String!
   dob: String!
   profile: String!
+  type: String!
 }

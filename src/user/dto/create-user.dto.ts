@@ -14,4 +14,6 @@ export class UserType {
   readonly dob: string;
   @Field()
   readonly profile: string;
+  @Field()
+  readonly type: string;
 }
