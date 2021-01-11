@@ -1,11 +1,9 @@
-import { InputType, Field, Int } from 'type-graphql';
+import { InputType, Field, Int, ID } from 'type-graphql';
 
 @InputType()
-export class CatInput {
+export class CourseInput {
   @Field()
   readonly name: string;
-  @Field(() => Int)
-  readonly age: number;
-  @Field()
-  readonly breed: string;
+  @Field(() => ID)
+  readonly author: [string];
 }

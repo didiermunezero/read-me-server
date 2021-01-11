@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
+import { User } from 'src/user/interfaces/user.interface';
 
-export interface Cat extends Document {
+export interface Course extends Document {
   readonly name: string;
-  readonly age: number;
-  readonly breed: string;
+  readonly author: [User];
 }

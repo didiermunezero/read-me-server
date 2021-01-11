@@ -3,17 +3,15 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-input CatInput {
+input CourseInput {
   name: String!
-  age: Int!
-  breed: String!
+  author: [ID!]!
 }
 
-type CatType {
+type CourseType {
   id: ID!
   name: String!
-  age: Int!
-  breed: String!
+  author: [Int!]!
 }
 
 input CreateInput {
@@ -27,19 +25,19 @@ input CreateInput {
 
 type Mutation {
   createUser(input: CreateInput!): UserType!
-  createCat(input: CatInput!): CatType!
+  createCat(input: CourseInput!): CourseType!
 }
 
 type Query {
   hello: String!
   users: [UserType!]!
   user(id: String!): UserType!
-  cats: [CatType!]!
+  cats: [CourseType!]!
 }
 
 type Subscription {
   newUser: UserType!
-  newCourse: CatType!
+  newCourse: CourseType!
 }
 
 type UserType {
