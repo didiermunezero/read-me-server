@@ -28,6 +28,7 @@ type CourseType {
 }
 
 input CreateInput {
+  email: String!
   username: String!
   fname: String!
   lname: String!

@@ -7,6 +7,7 @@ export interface User extends Document {
   readonly dob: string;
   readonly profile: string;
   readonly type: string;
+  readonly email: string;
 }
 
 export interface loginOutPut{

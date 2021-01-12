@@ -8,4 +8,5 @@ export interface User_Pass extends Document {
   readonly profile: string;
   readonly type: string;
   readonly password: string;
+  readonly email: string;
 }

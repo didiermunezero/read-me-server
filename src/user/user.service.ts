@@ -15,6 +15,10 @@ export class UserService {
 
   async create(createDto: CreateInput): Promise<User> {
     createDto.password = await bcrypt.hash(createDto.password, 12);
+    const exists = await this.userModel.findOne({$or:[
+      {username: createDto.username},
+      {email: createDto.email}
+    ]});
     const createdCat = new this.userModel(createDto);
     return await createdCat.save();
   }
