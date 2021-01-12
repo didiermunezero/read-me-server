@@ -35,7 +35,6 @@ export class UserResolver {
 
   @Mutation(()=>loginOutPut)
   async login(@Context('headers')headers:loginOutPut, @Args('logindata') logindata:loginInput){
-    console.log(headers)
       return this.userService.login(logindata)
   }
   @Subscription(() => UserType)

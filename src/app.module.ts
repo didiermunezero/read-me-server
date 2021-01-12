@@ -13,9 +13,14 @@ import {returnToken} from '../utils/tokenizer'
     CatsModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      cors: {
+        credentials: true,
+        origin: true,
+    },
       installSubscriptionHandlers: true,
       context: async({ req }) =>  ({ headers: {...req.headers,user: await returnToken(req)} }),
     }),
+    
     MongooseModule.forRoot('mongodb://localhost/readme',{
       useNewUrlParser: true,
     useUnifiedTopology: true,
