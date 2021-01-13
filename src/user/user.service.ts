@@ -4,8 +4,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User,loginOutPut } from './interfaces/user.interface';
 import {User_Pass} from './interfaces/user_pass.interface'
 import { CreateInput } from './inputs/create.input';
+import {userValidator,loginValidator} from './inputs/joi/create.joi'
 import {loginInput} from './inputs/login.input'
-import {ApolloError} from 'apollo-server-express';
+import {ApolloError, UserInputError} from 'apollo-server-express';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt'
 
@@ -14,15 +15,26 @@ export class UserService {
   constructor(@InjectModel('User') private readonly userModel: Model<User_Pass>) {}
 
   async create(createDto: CreateInput): Promise<User> {
-    createDto.password = await bcrypt.hash(createDto.password, 12);
-    const exists = await this.userModel.findOne({$or:[
-      {username: createDto.username},
+    const {error} = userValidator(createDto);
+    if(error){
+      throw new UserInputError(error.details[0].message)
+    }
+    const exists = await this.userModel.findOne(
+      {username: createDto.username}
+    );
+    if(exists){
+      throw new ApolloError("User name taken","TAKEN")
+    }
+    const emailexists = await this.userModel.findOne(
       {email: createDto.email}
-    ]});
+    );
+    if(emailexists){
+      throw new ApolloError("Email taken","TAKEN")
+    }
+    createDto.password = await bcrypt.hash(createDto.password, 12);
     const createdCat = new this.userModel(createDto);
     return await createdCat.save();
   }
-
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();
   }

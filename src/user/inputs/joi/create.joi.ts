@@ -5,7 +5,7 @@ const schema = Joi.object({
     lname: Joi.string().min(5).max(30).required(),
     fname: Joi.string().min(5).max(30).required(),
     password: Joi.string().min(3).max(30).required(),
-    email: Joi.string().min(8).max(30).required(),
+    email: Joi.string().email({ minDomainSegments: 2}),
     profile: Joi.string(),
     dob: Joi.date(),
 })

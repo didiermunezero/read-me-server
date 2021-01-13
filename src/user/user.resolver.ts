@@ -1,7 +1,7 @@
 import { Resolver, Subscription,Query, Mutation, Args, Context,} from '@nestjs/graphql';
 import {PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
-import { UserType,loginOutPut } from './dto/create-user.dto';
+import { UserType,loginOutPut,simpleUser } from './dto/create-user.dto';
 import { CreateInput } from './inputs/create.input';
 import {loginInput} from './inputs/login.input'
 const pubSub = new PubSub();
@@ -13,6 +13,15 @@ export class UserResolver {
   @Query(() => String)
   async hello() {
     return 'hello';
+  }
+
+  @Query(()=>UserType)
+  async getCurrentUser(@Context('headers')headers:simpleUser){
+    if(!headers){
+      throw new Error("Not odund")
+    }
+    const user  = this.userService.findOne(headers.userId)
+    return user;
   }
 
   @Query(() => [UserType])

@@ -18,7 +18,7 @@ import {returnToken} from '../utils/tokenizer'
         origin: true,
     },
       installSubscriptionHandlers: true,
-      context: async({ req }) =>  ({ headers: {...req.headers,user: await returnToken(req)} }),
+      context: async({ req }) =>  ({ headers: await returnToken(req) }),
     }),
     
     MongooseModule.forRoot('mongodb+srv://Gakstal:Gaksital@cluster0.ajh7r.mongodb.net/readme',{

@@ -56,6 +56,7 @@ type Mutation {
 type Query {
   hello: String!
   cats: [CatType!]!
+  getCurrentUser: UserType!
   users: [UserType!]!
   user(id: String!): UserType!
   courses: [CourseType!]!

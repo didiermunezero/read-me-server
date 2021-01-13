@@ -23,3 +23,11 @@ export class loginOutPut {
   @Field()
   readonly token: string;
 }
+
+ObjectType()
+export class simpleUser{
+  @Field(()=>ID)
+  readonly userId: string;
+  @Field()
+  readonly username: string;
+}
