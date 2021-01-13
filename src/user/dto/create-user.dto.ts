@@ -10,11 +10,11 @@ export class UserType {
   readonly fname: string;
   @Field()
   readonly lname: string;
-  @Field()
+  @Field({ nullable: true })
   readonly dob: string;
-  @Field()
+  @Field({ nullable: true })
   readonly profile: string;
-  @Field()
+  @Field({ nullable: true })
   readonly type: string;
 }
 

@@ -23,8 +23,8 @@ input CourseInput {
 
 type CourseType {
   id: ID!
-  name: String!
-  author: [UserType!]!
+  name: String
+  author: [UserType!]
 }
 
 input CreateInput {
@@ -32,8 +32,8 @@ input CreateInput {
   username: String!
   fname: String!
   lname: String!
-  dob: String!
-  profile: String!
+  dob: String
+  profile: String
   password: String!
 }
 
@@ -72,7 +72,7 @@ type UserType {
   username: String!
   fname: String!
   lname: String!
-  dob: String!
-  profile: String!
-  type: String!
+  dob: String
+  profile: String
+  type: String
 }

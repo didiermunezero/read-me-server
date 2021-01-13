@@ -5,8 +5,8 @@ import { ObjectType, Field, Int, ID } from 'type-graphql';
 export class CourseType {
   @Field(() => ID)
   id: string;
-  @Field()
+  @Field({ nullable: true })
   readonly name: string;
-  @Field(() => [UserType])
+  @Field(() => [UserType], { nullable: true })
   readonly author: UserType[];
 }

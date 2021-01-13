@@ -10,9 +10,9 @@ export class CreateInput {
   readonly fname: string;
   @Field()
   readonly lname: string;
-  @Field()
+  @Field({ nullable: true })
   readonly dob: string;
-  @Field()
+  @Field({ nullable: true })
   readonly profile: string;
   @Field()
    password: string;
