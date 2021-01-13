@@ -21,7 +21,7 @@ import {returnToken} from '../utils/tokenizer'
       context: async({ req }) =>  ({ headers: {...req.headers,user: await returnToken(req)} }),
     }),
     
-    MongooseModule.forRoot('mongodb://localhost/readme',{
+    MongooseModule.forRoot('mongodb+srv://Gakstal:Gaksital@cluster0.ajh7r.mongodb.net/readme',{
       useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
