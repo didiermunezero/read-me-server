@@ -76,4 +76,5 @@ type UserType {
   dob: String
   profile: String
   type: String
+  email: String!
 }

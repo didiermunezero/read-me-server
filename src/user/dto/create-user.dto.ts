@@ -16,6 +16,8 @@ export class UserType {
   readonly profile: string;
   @Field({ nullable: true })
   readonly type: string;
+  @Field()
+  readonly email: string;
 }
 
 @ObjectType()
