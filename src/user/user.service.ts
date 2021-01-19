@@ -48,6 +48,29 @@ export class UserService {
     if(!user){
       throw new ApolloError("Error Occurred, Try to login again","NOT_FOUND")
     }
+    const sameUser = await this.userModel.findOne({
+      _id: {
+        $ne: headers.UserToken.userId,
+      },
+      $or: [
+        {
+          email: userUpdateDto.email,
+        },
+        {
+          username: userUpdateDto.username,
+        },
+      ],
+    });
+    if (sameUser) {
+      const emailFound = userUpdateDto.email == sameUser.email;
+      const user_nameFound = userUpdateDto.username == sameUser.username;
+      const error = new ApolloError(
+        `${emailFound ? "Email " : user_nameFound ? "Username " : ""
+        } taken`,
+        "ALREADY_EXISTS"
+      );
+      throw error;
+    }
     user = Object.assign(user,userUpdateDto);
     const updated = await user.save();
     return updated;
