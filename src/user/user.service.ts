@@ -10,6 +10,7 @@ import {ApolloError, UserInputError} from 'apollo-server-express';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt'
 import {updateInput} from './inputs/update.input'
+import {headers} from '../../utils/headers.input'
 
 @Injectable()
 export class UserService {
@@ -37,17 +38,18 @@ export class UserService {
     return await createdCat.save();
   }
 
-  async updateUser(userUpdateDto: updateInput): Promise<User>{
+  async updateUser(userUpdateDto: updateInput,headers: headers): Promise<User>{
+    console.log(headers)
     const {error} = updateUserValidator(userUpdateDto);
     if(error){
       throw new UserInputError(error.details[0].message)
     }
-    let user = await this.userModel.findOne({_id: userUpdateDto._id});
+    let user = await this.userModel.findOne({username: userUpdateDto.username});
     if(!user){
       throw new ApolloError("User not found","NOT_FOUND")
     }
     user = Object.assign(user,userUpdateDto);
-    const updated = user.save();
+    const updated = await user.save();
     return updated;
   }
   async findAll(): Promise<User[]> {

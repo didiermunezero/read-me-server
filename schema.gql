@@ -49,6 +49,7 @@ type loginOutPut {
 type Mutation {
   createCat(input: CatInput!): CatType!
   createUser(input: CreateInput!): UserType!
+  updateUser(update: updateInput!): UserType!
   login(logindata: loginInput!): loginOutPut!
   createCourse(input: CourseInput!): CourseType!
 }
@@ -66,6 +67,27 @@ type Subscription {
   newCat: CatType!
   newUser: UserType!
   newCourse: CourseType!
+}
+
+input updateInput {
+  _id: ID!
+  email: String
+  username: String
+  fname: String
+  lname: String
+  dob: String
+  profile: String
+  password: String!
+}
+
+input updateInputNoId {
+  email: String
+  username: String
+  fname: String
+  lname: String
+  dob: String
+  profile: String
+  password: String
 }
 
 type UserType {

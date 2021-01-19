@@ -3,7 +3,9 @@ import {PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
 import { UserType,loginOutPut,simpleUser } from './dto/create-user.dto';
 import { CreateInput } from './inputs/create.input';
+import {updateInput} from './inputs/update.input'
 import {loginInput} from './inputs/login.input'
+import {headers} from '../../utils/headers.input'
 const pubSub = new PubSub();
 
 @Resolver()
@@ -16,11 +18,11 @@ export class UserResolver {
   }
 
   @Query(()=>UserType)
-  async getCurrentUser(@Context('headers')headers:simpleUser){
+  async getCurrentUser(@Context('headers')headers:headers){
     if(!headers){
       throw new Error("Not odund")
     }
-    const user  = this.userService.findOne(headers.userId)
+    const user  = this.userService.findOne(headers.UserToken.userId)
     return user;
   }
 
@@ -41,7 +43,11 @@ export class UserResolver {
     pubSub.publish('newUser', { newUser: input });
     return this.userService.create(input);
   }
-
+  @Mutation(()=>UserType)
+  async updateUser(@Context('headers')headers:headers,@Args('update')update: updateInput){
+    console.log(headers)
+    return this.userService.updateUser(update,headers);
+  }
   @Mutation(()=>loginOutPut)
   async login(@Context('headers')headers:loginOutPut, @Args('logindata') logindata:loginInput){
       return this.userService.login(logindata)
