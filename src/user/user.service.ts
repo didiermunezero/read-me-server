@@ -35,6 +35,11 @@ export class UserService {
     const createdCat = new this.userModel(createDto);
     return await createdCat.save();
   }
+
+  async updateUser(): Promise<User>{
+
+    return updated;
+  }
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();
   }
