@@ -23,7 +23,6 @@ export function loginValidator(user){
 
 export function updateUserValidator(user){
     const schema = Joi.object({
-        _id: Joi.string().required().min(24).max(24),
         username: Joi.string().min(5).max(30),
         lname: Joi.string().min(5).max(30),
         fname: Joi.string().min(5).max(30),

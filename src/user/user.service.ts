@@ -44,9 +44,9 @@ export class UserService {
     if(error){
       throw new UserInputError(error.details[0].message)
     }
-    let user = await this.userModel.findOne({username: userUpdateDto.username});
+    let user = await this.userModel.findOne({_id: headers.UserToken.userId});
     if(!user){
-      throw new ApolloError("User not found","NOT_FOUND")
+      throw new ApolloError("Error Occurred, Try to login again","NOT_FOUND")
     }
     user = Object.assign(user,userUpdateDto);
     const updated = await user.save();
