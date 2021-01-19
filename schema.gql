@@ -70,17 +70,6 @@ type Subscription {
 }
 
 input updateInput {
-  _id: ID!
-  email: String
-  username: String
-  fname: String
-  lname: String
-  dob: String
-  profile: String
-  password: String!
-}
-
-input updateInputNoId {
   email: String
   username: String
   fname: String
