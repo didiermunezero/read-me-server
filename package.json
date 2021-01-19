@@ -10,6 +10,7 @@
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon",
     "start:debug": "nodemon --config nodemon-debug.json",
+    "postinstall": "npm run prestart:prod",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -20,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/cli": "^7.5.4",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/graphql": "^6.0.5",
@@ -27,6 +29,7 @@
     "@nestjs/platform-express": "^6.0.0",
     "apollo-server-express": "^2.4.8",
     "bcrypt": "^5.0.0",
+    "global": "^4.4.0",
     "graphql": "^14.2.1",
     "graphql-subscriptions": "^1.1.0",
     "graphql-tools": "^4.0.4",
