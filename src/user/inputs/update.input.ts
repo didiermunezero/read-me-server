@@ -1,9 +1,9 @@
 import { InputType, Field,ID} from 'type-graphql';
 
 @InputType()
-export class CreateInput {
+export class updateInput {
     @Field(() => ID)
-   _id: Int16Array
+   _id: string
   @Field({ nullable: true })
    email: string;
   @Field({ nullable: true })
