@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User,loginOutPut } from './interfaces/user.interface';
 import {User_Pass} from './interfaces/user_pass.interface'
 import { CreateInput } from './inputs/create.input';
-import {userValidator,loginValidator} from './inputs/joi/create.joi'
+import {userValidator,loginValidator,updateUserValidator} from './inputs/joi/create.joi'
 import {loginInput} from './inputs/login.input'
 import {ApolloError, UserInputError} from 'apollo-server-express';
 import * as jwt from 'jsonwebtoken';
@@ -36,8 +36,11 @@ export class UserService {
     return await createdCat.save();
   }
 
-  async updateUser(): Promise<User>{
-
+  async updateUser(userUpdateDto: updateInput): Promise<User>{
+    const {error} = updateUserValidator(userUpdateDto);
+    if(error){
+      throw new UserInputError(error.details[0].message)
+    }
     return updated;
   }
   async findAll(): Promise<User[]> {
