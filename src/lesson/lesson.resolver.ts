@@ -6,7 +6,7 @@ import { LessonInput } from './inputs/lesson.input';
 const pubSub = new PubSub();
 
 @Resolver()
-export class CourseResolver {
+export class LessonResolver {
   constructor(private readonly lessonService: LessonService) {}
 
   @Query(() => String)
