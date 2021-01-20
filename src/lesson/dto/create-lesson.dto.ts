@@ -1,3 +1,4 @@
+import { CourseType } from 'src/course/dto/create-course.dto';
 import { UserType } from 'src/user/dto/create-user.dto';
 import { ObjectType, Field, Int, ID } from 'type-graphql';
 
@@ -11,4 +12,6 @@ export class LessonType {
   readonly name: string;
   @Field(() => [UserType], { nullable: true })
   readonly author: UserType[];
+  @Field(()=>CourseType,{nullable: true})
+  readonly course: CourseType;
 }

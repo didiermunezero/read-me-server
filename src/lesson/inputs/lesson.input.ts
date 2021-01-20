@@ -8,4 +8,6 @@ export class LessonInput {
   readonly content: string;
   @Field(() => ID)
   readonly author: [string];
+  @Field(()=>ID)
+  readonly course: string;
 }
