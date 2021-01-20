@@ -4,6 +4,6 @@ import { InputType, Field, ID } from 'type-graphql';
 export class CourseInput {
   @Field()
   readonly name: string;
-  @Field(() => ID)
+  @Field(() => ID,{nullable: true})
   readonly author: [string];
 }
