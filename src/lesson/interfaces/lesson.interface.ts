@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface Course extends Document {
+export interface Lesson extends Document {
   readonly name: string;
   readonly author: [string];
 }
