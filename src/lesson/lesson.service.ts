@@ -6,7 +6,6 @@ import { LessonInput } from './inputs/lesson.input';
 import { ApolloError } from 'apollo-server-express';
 import {headers} from '../../utils/headers.input'
 import { lessonUpdate } from './inputs/update.input';
-import { Course } from 'src/course/interfaces/course.interface';
 
 @Injectable()
 export class LessonService {
@@ -18,9 +17,9 @@ export class LessonService {
     return await createdCat.save();
   }
 
-  async updateLesson(userUpdateDto: lessonUpdate,headers: headers): Promise<Lesson>{
+  async updateLesson(lessonUpdateDto: lessonUpdate,headers: headers): Promise<Lesson>{
     console.log(headers)
-    // const {error} = updateUserValidator(userUpdateDto);
+    // const {error} = updateUserValidator(lessonUpdateDto);
     // if(error){
     //   throw new UserInputError(error.details[0].message)
     // }
@@ -30,18 +29,18 @@ export class LessonService {
     }
     const sameUser = await this.lessonModel.findOne({
       _id: {
-        $ne: headers.UserToken.userId,
+        $ne: lessonUpdateDto._id,
       },
       $or: [
         {
-          email: userUpdateDto.title,
+          title: lessonUpdateDto.title,
         },
       ],
     });
     if (sameUser) {
      throw new ApolloError("Lesson title taken","ALREADY_EXISTS");
     }
-    user = Object.assign(user,userUpdateDto);
+    user = Object.assign(user,lessonUpdateDto);
     const updated = await user.save();
     return updated;
   }

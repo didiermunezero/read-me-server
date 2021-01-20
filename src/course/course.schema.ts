@@ -9,4 +9,6 @@ export const CourseSchema = new mongoose.Schema({
     ref: 'User'
   }
 ]
+},{
+  timestamps: true,
 });
