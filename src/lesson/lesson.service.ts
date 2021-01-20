@@ -10,7 +10,7 @@ import { Course } from 'src/course/interfaces/course.interface';
 
 @Injectable()
 export class LessonService {
-  constructor(@InjectModel('Lesson') private readonly lessonModel: Model<Lesson>,@InjectModel('Course') private readonly courseModel: Model<Course>) {}
+  constructor(@InjectModel('Lesson') private readonly lessonModel: Model<Lesson>) {}
   //constructor()
 
   async create(createCatDto: LessonInput): Promise<Lesson> {

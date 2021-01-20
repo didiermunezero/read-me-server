@@ -28,7 +28,8 @@ import {LessonModule} from './lesson/lesson.module'
     useCreateIndex: true,
     }),
     UserModule,
-    CourseModule
+    CourseModule,
+    LessonModule
   ],
   controllers: [AppController],
   providers: [AppService],

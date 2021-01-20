@@ -37,6 +37,29 @@ input CreateInput {
   password: String!
 }
 
+input LessonInput {
+  name: String!
+  content: String!
+  author: [ID!]!
+  course: ID!
+}
+
+type LessonType {
+  id: ID!
+  content: String!
+  name: String
+  author: [UserType!]
+  course: CourseType
+}
+
+input lessonUpdate {
+  _id: ID!
+  title: String
+  content: String
+  author: [ID!]
+  course: ID
+}
+
 input loginInput {
   username: String!
   password: String!
@@ -52,6 +75,8 @@ type Mutation {
   updateUser(update: updateInput!): UserType!
   login(logindata: loginInput!): loginOutPut!
   createCourse(input: CourseInput!): CourseType!
+  updateLesson(update: lessonUpdate!): LessonType!
+  createLesson(input: LessonInput!): LessonType!
 }
 
 type Query {
@@ -61,12 +86,16 @@ type Query {
   users: [UserType!]!
   user(id: String!): UserType!
   courses: [CourseType!]!
+  helloLessons: String!
+  lessons: [LessonType!]!
+  lesson(id: String!): LessonType!
 }
 
 type Subscription {
   newCat: CatType!
   newUser: UserType!
   newCourse: CourseType!
+  newLesson: LessonType!
 }
 
 input updateInput {
