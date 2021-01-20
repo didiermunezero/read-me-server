@@ -10,8 +10,8 @@ export class LessonResolver {
   constructor(private readonly lessonService: LessonService) {}
 
   @Query(() => String)
-  async hello() {
-    return 'hello';
+  async helloLessons() {
+    return 'hello you are altering lessons';
   }
 
   @Query(() => [LessonType])

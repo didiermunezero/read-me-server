@@ -4,6 +4,8 @@ import { InputType, Field, Int, ID } from 'type-graphql';
 export class LessonInput {
   @Field()
   readonly name: string;
+  @Field()
+  readonly content: string;
   @Field(() => ID)
   readonly author: [string];
 }

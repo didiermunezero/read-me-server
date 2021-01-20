@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
 
-export const CourseSchema = new mongoose.Schema({
-  name: String,
+export const LessonSchema = new mongoose.Schema({
+  title: String,
+  content: String,
   author:[
     {
     type: mongoose.Schema.Types.ObjectId,
