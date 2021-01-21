@@ -25,6 +25,12 @@ export class CourseResolver {
     pubSub.publish('newCourse', { newCourse: input });
     return this.courseService.create(input,headers);
   }
+
+  @Mutation(()=> CreatedCourseOut)
+  async updateCourse(@Args('input') input: CourseInput,@Context('headers')headers:headers){
+    return this.courseService.create(input,headers)
+  }
+
   @Subscription(() => CreatedCourseOut)
   newCourse() {
     return pubSub.asyncIterator('newCourse');
