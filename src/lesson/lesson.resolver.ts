@@ -37,6 +37,7 @@ export class LessonResolver {
   }
   @Mutation(() => LessonType)
   async createLesson(@Args('input') input: LessonInput) {
+    console.log(input)
     pubSub.publish('newLesson', { newLesson: input });
     return this.lessonService.create(input);
   }
