@@ -13,7 +13,7 @@ export class LessonService {
   //constructor()
 
   async create(createCatDto: LessonInput): Promise<Lesson> {
-    const createdCat = new this.lessonModel(createCatDto);
+    const createdCat = new this.lessonModel({...createCatDto,createdby:'5ffea2835cc3812678b9a435'});
     return await createdCat.save();
   }
 
