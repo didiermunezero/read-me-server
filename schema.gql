@@ -83,6 +83,7 @@ type Mutation {
   updateUser(update: updateInput!): UserType!
   login(logindata: loginInput!): loginOutPut!
   createCourse(input: CourseInput!): CreatedCourseOut!
+  updateCourse(input: CourseInput!): CreatedCourseOut!
   updateLesson(update: lessonUpdate!): LessonType!
   createLesson(input: LessonInput!): LessonType!
 }
