@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Lesson } from './interfaces/lesson.interface';
 import { LessonInput } from './inputs/lesson.input';
-import { ApolloError } from 'apollo-server-express';
+import { ApolloError, AuthenticationError } from 'apollo-server-express';
 import {headers} from '../../utils/headers.input'
 import { lessonUpdate } from './inputs/update.input';
 
@@ -12,8 +12,11 @@ export class LessonService {
   constructor(@InjectModel('Lesson') private readonly lessonModel: Model<Lesson>) {}
   //constructor()
 
-  async create(createCatDto: LessonInput): Promise<Lesson> {
-    const createdCat = new this.lessonModel({...createCatDto,createdby:'5ffea2835cc3812678b9a435'});
+  async create(createCatDto: LessonInput,headers: headers): Promise<Lesson> {
+    if(!headers.UserToken){
+      throw new AuthenticationError("Login required")
+    }
+    const createdCat = new this.lessonModel({...createCatDto,createdby: headers.UserToken.userId});
     return await createdCat.save();
   }
 

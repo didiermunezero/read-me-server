@@ -5,4 +5,5 @@ export interface Lesson extends Document {
   readonly content: string;
   readonly author: [string];
   readonly course: string;
+  readonly createdby: string;
 }
