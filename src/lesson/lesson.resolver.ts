@@ -32,12 +32,10 @@ export class LessonResolver {
     if(!headers.UserToken || !headers.token){
       throw new AuthenticationError("Login required")
     }
-    console.log(headers)
     return this.lessonService.updateLesson(update,headers);
   }
   @Mutation(() => LessonType)
   async createLesson(@Args('input') input: LessonInput) {
-    console.log(input)
     pubSub.publish('newLesson', { newLesson: input });
     return this.lessonService.create(input);
   }

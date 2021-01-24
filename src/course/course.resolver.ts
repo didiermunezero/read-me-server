@@ -1,5 +1,5 @@
 import { Resolver, Subscription,Query, Mutation, Args, Context,} from '@nestjs/graphql';
-import {PubSub} from 'apollo-server-express'
+import {AuthenticationError, PubSub} from 'apollo-server-express'
 import { CourseService } from './course.service';
 import { CourseType,CreatedCourseOut } from './dto/create-course.dto';
 import { CourseInput } from './inputs/course.input';
@@ -22,6 +22,9 @@ export class CourseResolver {
 
   @Mutation(() => CreatedCourseOut)
   async createCourse(@Args('input') input: CourseInput,@Context('headers')headers:headers) {
+    if(!headers.UserToken){
+      throw new AuthenticationError("login required");
+    }
     pubSub.publish('newCourse', { newCourse: input });
     return this.courseService.create(input,headers);
   }
