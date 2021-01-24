@@ -22,10 +22,6 @@ export class LessonService {
 
   async updateLesson(lessonUpdateDto: lessonUpdate,headers: headers): Promise<Lesson>{
     console.log(headers)
-    // const {error} = updateUserValidator(lessonUpdateDto);
-    // if(error){
-    //   throw new UserInputError(error.details[0].message)
-    // }
     let user = await this.lessonModel.findOne({_id: headers.UserToken.userId});
     if(!user){
       throw new ApolloError("Error Occurred, Try to login again","NOT_FOUND")
@@ -48,7 +44,7 @@ export class LessonService {
     return updated;
   }
   async findAll(): Promise<Lesson[]> {
-    return await this.lessonModel.find().populate('author').populate('course').exec();
+    return await this.lessonModel.find().populate('author').populate('createdby').populate('course').exec();
   }
   async findOne(id: string): Promise<Lesson> {
     const lesson = await this.lessonModel.findOne({_id: id});
