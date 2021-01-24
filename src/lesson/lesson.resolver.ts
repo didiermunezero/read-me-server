@@ -35,9 +35,12 @@ export class LessonResolver {
     return this.lessonService.updateLesson(update,headers);
   }
   @Mutation(() => LessonType)
-  async createLesson(@Args('input') input: LessonInput) {
+  async createLesson(@Context('headers')headers:headers,@Args('input') input: LessonInput) {
+    if(!headers.UserToken || !headers.token){
+      throw new AuthenticationError("Login required")
+    }
     pubSub.publish('newLesson', { newLesson: input });
-    return this.lessonService.create(input);
+    return this.lessonService.create(input,headers);
   }
   @Subscription(() => LessonType)
   newLesson() {
