@@ -58,6 +58,7 @@ type LessonType {
   title: String
   author: [UserType!]
   course: CourseType
+  createdby: UserType
 }
 
 input lessonUpdate {

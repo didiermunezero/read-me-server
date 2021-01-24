@@ -14,4 +14,6 @@ export class LessonType {
   readonly author: UserType[];
   @Field(()=>CourseType,{nullable: true})
   readonly course: CourseType;
+  @Field(()=>UserType,{nullable: true})
+  readonly createdby: UserType
 }
