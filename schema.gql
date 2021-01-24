@@ -46,7 +46,7 @@ input CreateInput {
 }
 
 input LessonInput {
-  name: String!
+  title: String!
   content: String!
   author: [ID!]!
   course: ID!
@@ -55,7 +55,7 @@ input LessonInput {
 type LessonType {
   id: ID!
   content: String!
-  name: String
+  title: String
   author: [UserType!]
   course: CourseType
 }

@@ -3,7 +3,7 @@ import { InputType, Field, Int, ID } from 'type-graphql';
 @InputType()
 export class LessonInput {
   @Field()
-  readonly name: string;
+  readonly title: string;
   @Field()
   readonly content: string;
   @Field(() => ID)

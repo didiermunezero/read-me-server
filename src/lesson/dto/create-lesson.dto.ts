@@ -9,7 +9,7 @@ export class LessonType {
   @Field()
   content: string;
   @Field({ nullable: true })
-  readonly name: string;
+  readonly title: string;
   @Field(() => [UserType], { nullable: true })
   readonly author: UserType[];
   @Field(()=>CourseType,{nullable: true})
