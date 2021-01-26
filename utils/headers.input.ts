@@ -16,4 +16,5 @@ export class headers{
     @Field()
     UserToken: UserToken
     @Field()
-    token: Token}
+    token: Token
+  }
