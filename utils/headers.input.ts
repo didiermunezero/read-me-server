@@ -1,4 +1,4 @@
-import { Field} from 'type-graphql';
+import { Field } from 'type-graphql';
 
 export class UserToken {
   @Field()
