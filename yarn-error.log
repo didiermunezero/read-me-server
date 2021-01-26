@@ -23,7 +23,7 @@ Trace:
 
 npm manifest: 
   {
-    "name": "nest-mongo-graphql",
+    "name": "read-me-server",
     "version": "0.0.1",
     "description": "",
     "author": "",
