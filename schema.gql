@@ -18,7 +18,7 @@ type CatType {
 
 input CourseInput {
   name: String!
-  author: ID
+  author: [ID!]
 }
 
 type CourseType {
@@ -48,7 +48,7 @@ input CreateInput {
 input LessonInput {
   title: String!
   content: String!
-  author: ID!
+  author: [ID!]!
   course: ID!
 }
 
@@ -65,7 +65,7 @@ input lessonUpdate {
   _id: ID!
   title: String
   content: String
-  author: ID
+  author: [ID!]
   course: ID
 }
 
