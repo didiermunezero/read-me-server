@@ -1,4 +1,4 @@
-import { InputType, Field} from 'type-graphql';
+import { Field} from 'type-graphql';
 //to make sure it works
 export class UserToken {
   @Field()
@@ -17,4 +17,4 @@ export class headers{
     UserToken: UserToken
     @Field()
     token: Token
-}
+  }

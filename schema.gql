@@ -18,13 +18,21 @@ type CatType {
 
 input CourseInput {
   name: String!
-  author: [ID!]!
+  author: ID
 }
 
 type CourseType {
   id: ID!
   name: String
   author: [UserType!]
+  createdby: UserType
+}
+
+type CreatedCourseOut {
+  id: ID!
+  name: String
+  author: [ID!]
+  createdby: ID
 }
 
 input CreateInput {
@@ -35,6 +43,30 @@ input CreateInput {
   dob: String
   profile: String
   password: String!
+}
+
+input LessonInput {
+  title: String!
+  content: String!
+  author: ID!
+  course: ID!
+}
+
+type LessonType {
+  id: ID!
+  content: String!
+  title: String
+  author: [UserType!]
+  course: CourseType
+  createdby: UserType
+}
+
+input lessonUpdate {
+  _id: ID!
+  title: String
+  content: String
+  author: ID
+  course: ID
 }
 
 input loginInput {
@@ -51,7 +83,10 @@ type Mutation {
   createUser(input: CreateInput!): UserType!
   updateUser(update: updateInput!): UserType!
   login(logindata: loginInput!): loginOutPut!
-  createCourse(input: CourseInput!): CourseType!
+  createCourse(input: CourseInput!): CreatedCourseOut!
+  updateCourse(input: CourseInput!): CreatedCourseOut!
+  updateLesson(update: lessonUpdate!): LessonType!
+  createLesson(input: LessonInput!): LessonType!
 }
 
 type Query {
@@ -60,13 +95,18 @@ type Query {
   getCurrentUser: UserType!
   users: [UserType!]!
   user(id: String!): UserType!
+  helloCourses: String!
   courses: [CourseType!]!
+  helloLessons: String!
+  lessons: [LessonType!]!
+  lesson(id: String!): LessonType!
 }
 
 type Subscription {
   newCat: CatType!
   newUser: UserType!
-  newCourse: CourseType!
+  newCourse: CreatedCourseOut!
+  newLesson: LessonType!
 }
 
 input updateInput {

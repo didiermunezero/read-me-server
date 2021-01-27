@@ -1,11 +1,11 @@
 import { Resolver, Subscription,Query, Mutation, Args, Context,} from '@nestjs/graphql';
 import {AuthenticationError, PubSub} from 'apollo-server-express'
 import { UserService } from './user.service';
-import { UserType,loginOutPut,simpleUser } from './dto/create-user.dto';
+import { UserType,loginOutPut} from './dto/create-user.dto';
 import { CreateInput } from './inputs/create.input';
 import {updateInput} from './inputs/update.input'
 import {loginInput} from './inputs/login.input'
-import {headers, Token} from '../../utils/headers.input'
+import {headers} from '../../utils/headers.input'
 const pubSub = new PubSub();
 
 @Resolver()

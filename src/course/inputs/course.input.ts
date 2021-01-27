@@ -1,9 +1,9 @@
-import { InputType, Field, Int, ID } from 'type-graphql';
+import { InputType, Field, ID } from 'type-graphql';
 
 @InputType()
 export class CourseInput {
   @Field()
   readonly name: string;
-  @Field(() => ID)
+  @Field(() => ID,{nullable: true})
   readonly author: [string];
 }

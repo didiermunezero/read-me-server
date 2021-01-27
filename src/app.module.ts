@@ -7,6 +7,7 @@ import { CatsModule } from './cats/cats.module';
 import { UserModule } from './user/user.module';
 import { CourseModule } from './course/course.module';
 import {returnToken} from '../utils/tokenizer'
+import {LessonModule} from './lesson/lesson.module'
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import {returnToken} from '../utils/tokenizer'
     useCreateIndex: true,
     }),
     UserModule,
-    CourseModule
+    CourseModule,
+    LessonModule
   ],
   controllers: [AppController],
   providers: [AppService],
