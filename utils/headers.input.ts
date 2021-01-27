@@ -1,5 +1,5 @@
 import { InputType, Field} from 'type-graphql';
-
+//to make sure it works
 export class UserToken {
   @Field()
   readonly userId: string;
