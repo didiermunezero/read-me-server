@@ -21,8 +21,8 @@ import {LessonModule} from './lesson/lesson.module'
       installSubscriptionHandlers: true,
       context: async({ req }) =>  ({ headers: {token: req.headers["token"],UserToken:await returnToken(req)} }),
     }),
-    
-    MongooseModule.forRoot('mongodb+srv://Gakstal:Gaksital@cluster0.ajh7r.mongodb.net/readme',{
+    //mongodb+srv://Gakstal:Gaksital@cluster0.ajh7r.mongodb.net/readme
+    MongooseModule.forRoot('mongodb://localhost:27017/readme',{
       useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
