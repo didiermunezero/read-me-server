@@ -27,7 +27,7 @@
     "@nestjs/platform-express": "^6.0.0",
     "@types/express-serve-static-core": "^4.17.18",
     "apollo-server-express": "^2.4.8",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "global": "^4.4.0",
