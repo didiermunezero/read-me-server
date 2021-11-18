@@ -26,7 +26,7 @@
     "@nestjs/mongoose": "9.0.1",
     "@nestjs/platform-express": "8.2.0",
     "@types/express-serve-static-core": "4.17.24",
-    "apollo-server-express": "3.3.0",
+    "apollo-server-express": "3.5.0",
     "bcrypt": "5.0.1",
     "cors": "2.8.5",
     "express": "4.17.1",
@@ -42,7 +42,7 @@
     "rimraf": "3.0.2",
     "rxjs": "6.6.7",
     "type-graphql": "1.1.1",
-    "ws": "8.2.2"
+    "ws": "8.2.3"
   },
   "devDependencies": {
     "@nestjs/testing": "8.2.0",
@@ -76,6 +76,6 @@
   },
   "engines": {
     "node": "16.13.0",
-    "yarn": "1.22.11"
+    "yarn": "1.22.17"
   }
 }
