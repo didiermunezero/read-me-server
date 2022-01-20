@@ -26,7 +26,7 @@
     "@nestjs/mongoose": "9.0.2",
     "@nestjs/platform-express": "8.2.4",
     "@types/express-serve-static-core": "4.17.28",
-    "apollo-server-express": "3.5.0",
+    "apollo-server-express": "3.6.2",
     "bcrypt": "5.0.1",
     "cors": "2.8.5",
     "express": "4.17.2",
