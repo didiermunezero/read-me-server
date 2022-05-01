@@ -33,7 +33,7 @@
     "global": "4.4.0",
     "graphql": "16.3.0",
     "graphql-subscriptions": "2.0.0",
-    "graphql-tools": "8.2.0",
+    "graphql-tools": "8.2.8",
     "joi": "17.6.0",
     "joi-objectid": "4.0.2",
     "jsonwebtoken": "8.5.1",
